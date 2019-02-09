@@ -5,7 +5,9 @@
 libDiscord
 ============
 
-Discord RPC module for the Panda3d game engine using the native discord-rpc library.
+Discord RPC module for the Panda3d game engine using the native discord-rpc library. 
+
+<b>Notice:</b> Currently the CMAKE code is only setup to operate properly on Windows. The source its self should have no issues running on other platforms however.
 
 
 ## Building LibDiscord
