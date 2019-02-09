@@ -1,0 +1,14 @@
+# Built files
+*.pyd
+*.pyc
+*.so
+*.pdb
+
+# Various output names
+win_*/
+linux_*/
+osx_*/
+Source/Interrogate*
+
+# Discord RPC
+discord-rpc/
