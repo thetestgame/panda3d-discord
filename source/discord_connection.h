@@ -30,6 +30,7 @@
 
 #include "config_discord.h"
 #include "rich_presence_status.h"
+#include "discord_connection_user.h"
 
 #include "pandabase.h"
 #include "pandaFramework.h"
@@ -51,15 +52,29 @@ class DiscordConnection : public TypedReferenceCount {
         DiscordConnection();
         ~DiscordConnection();
 
-        void connect(std::string application_id, std::string steam_id);
+        void connect(std::string application_id);
         void disconnect();
-        void update();
+        void tick();
 
         void update_presence(RichPresenceStatus* status);
+        //INLINE RichPresenceStatus* get_rich_presence();
+
+        // This enum contains every reply state for the Discord
+        // connection.
+        enum DiscordReply {
+            DR_REPLY_NO = 1,
+            DR_REPLY_YES = 2,
+            DR_REPLY_IGNORE = 3
+        };
+        void respond(std::string userId, DiscordReply response);
+
+        INLINE DiscordConnectionUser* get_connection_user();
+        MAKE_PROPERTY(connection_user, get_connection_user);
 
     private:
-        static bool b_setup;
+        static bool p_setup;
 
+        DiscordConnectionUser* p_connection_user;
     public:
         static TypeHandle get_class_type() {
             return _type_handle;
@@ -77,5 +92,7 @@ class DiscordConnection : public TypedReferenceCount {
     private:
         static TypeHandle _type_handle;
 };
+
+#include "discord_connection.I"
 
 #endif

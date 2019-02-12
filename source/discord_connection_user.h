@@ -25,38 +25,43 @@
  * SOFTWARE.
  */
 
-#ifndef _RICH_PRESENCE_STATUS_H_
-#define _RICH_PRESENCE_STATUS_H_
+#ifndef _DISCORD_CONNECTION_USER_H_
+#define _DISCORD_CONNECTION_USER_H_
 
 #include "config_discord.h"
-
 #include "discord_rpc.h"
-
 #include "typedReferenceCount.h"
 
-#include <string>
-#include <iostream>
+#include "string.h"
 
-class RichPresenceStatus : public TypedReferenceCount, DiscordRichPresence {
+/*
+ * Panda wrapper class for the discord-rpc DiscordUser struct
+ */
+class DiscordConnectionUser : public TypedReferenceCount, DiscordUser {
 
     PUBLISHED:
-        RichPresenceStatus();
-        ~RichPresenceStatus();
 
-        INLINE void set_state(std::string state);
-        INLINE std::string get_state();
-        MAKE_PROPERTY(state, get_state, set_state);
+        INLINE std::string get_username();
+        INLINE std::string get_discriminator();
+        INLINE std::string get_user_id();
+        INLINE std::string get_avatar();
 
-        INLINE void set_details(std::string details);
-        INLINE std::string get_details();
-        MAKE_PROPERTY(details, get_details, set_details);
+        /* Define properties */
+        MAKE_PROPERTY(username, get_username);
+        MAKE_PROPERTY(discriminator, get_discriminator);
+        MAKE_PROPERTY(user_id, get_user_id);
+        MAKE_PROPERTY(avatar, get_avatar);
+
+    public:
+        DiscordConnectionUser(struct DiscordUser *user);
+
     public:
         static TypeHandle get_class_type() {
             return _type_handle;
         }
         static void init_type() {
             TypedReferenceCount::init_type();
-            register_type(_type_handle, "RichPresenceStatus",
+            register_type(_type_handle, "DiscordConnectionUser",
                 TypedReferenceCount::get_class_type());
         }
         virtual TypeHandle get_type() const {
@@ -68,6 +73,6 @@ class RichPresenceStatus : public TypedReferenceCount, DiscordRichPresence {
         static TypeHandle _type_handle;
 };
 
-#include "rich_presence_status.I"
+#include "discord_connection_user.I"
 
 #endif

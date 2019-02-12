@@ -30,6 +30,7 @@
 /*
  * Import all the required files for the libdiscord module
  */
+#include "discord_connection_user.h"
 #include "discord_connection.h"
 #include "rich_presence_status.h"
 
@@ -55,6 +56,7 @@ void init_libdiscord() {
   }
   initialized = true;
 
+  DiscordConnectionUser::init_type();
   DiscordConnection::init_type();
   RichPresenceStatus::init_type();
 

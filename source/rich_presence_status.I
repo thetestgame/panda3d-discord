@@ -26,18 +26,18 @@
  */
 
 INLINE void RichPresenceStatus::set_state(std::string state) {
-
+    this->state = state.c_str();
 }
 
 INLINE std::string RichPresenceStatus::get_state() {
-    return ""; //TODO
+    return this->state;
 }
 
 INLINE void RichPresenceStatus::set_details(std::string details) {
-
+    this->details = details.c_str();
 }
 
 INLINE std::string RichPresenceStatus::get_details() {
-    return ""; //TODO
+    return this->details;
 }
 

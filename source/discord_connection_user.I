@@ -1,4 +1,4 @@
-"""
+ /**
  *  Author: Jordan Maxwell
  * Written: 02/11/2019
  *
@@ -23,34 +23,20 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
-"""
+ */
 
-from panda3d.core import *
-from direct.showbase.ShowBase import ShowBase
-import libdiscord
+INLINE std::string DiscordConnectionUser::get_username() {
+    return this->username;
+}
 
-# Create Discord connection
-connection = libdiscord.DiscordConnection()
-connection.connect('345229890980937739')
+INLINE std::string DiscordConnectionUser::get_discriminator() {
+    return this->discriminator;
+}
 
-# Set test status 
-status = libdiscord.RichPresenceStatus()
-status.set_state('Woah!')
-status.set_details('Wow!')
-connection.update_presence(status)
+INLINE std::string DiscordConnectionUser::get_user_id() {
+    return this->userId;
+}
 
-def perform_update(task):
-    """
-    Calls the connection update function once per frame
-    """
-
-    connection.tick()
-    
-    return task.cont 
-
-# Create showbase instance and add discord update task
-base = ShowBase()
-base.taskMgr.add(perform_update, 'discord-update-task')
-
-# Run showbase
-base.run()
+INLINE std::string DiscordConnectionUser::get_avatar() {
+    return this->avatar;
+}

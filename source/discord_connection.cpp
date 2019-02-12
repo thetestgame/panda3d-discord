@@ -26,8 +26,9 @@
  */
 
 #include "discord_connection.h"
+#include "throw_event.h"
 
-bool DiscordConnection::b_setup;
+bool DiscordConnection::p_setup;
 TypeHandle DiscordConnection::_type_handle;
 
 DiscordConnection::DiscordConnection() {
@@ -39,22 +40,25 @@ DiscordConnection::~DiscordConnection() {
 }
 
 /* 
- * Performs setup operations for the Discord RPC library
+ * Performs initial initialization of the discord-rpc library
  */
-void DiscordConnection::connect(std::string application_id, std::string steam_id) {
+void DiscordConnection::connect(std::string application_id) {
 
     // Check if the rpc has been setup else where
-    if (b_setup) {
+    if (p_setup) {
         discord_cat.warning() << "Failed to setup DiscordConnection; a discord-rpc connection is already running!" << std::endl;
         return;
     }
-
+    
+    // Setup event handlers
     DiscordEventHandlers handlers;
     memset(&handlers, 0, sizeof(handlers));
 
-    Discord_Initialize(application_id.c_str(), &handlers, 1, steam_id.c_str());
-    discord_cat.info() << "discord-rpc connection established." << std::endl;
-    b_setup = true;
+    // Initialize Discord library
+    const char* c_application_id = application_id.c_str();
+    Discord_Initialize(c_application_id, &handlers, 1, NULL);
+    discord_cat.info() << "discord-rpc connection established with application (" << application_id << ")" << std::endl;
+    p_setup = true;
 }
 
 /* 
@@ -63,31 +67,29 @@ void DiscordConnection::connect(std::string application_id, std::string steam_id
 void DiscordConnection::disconnect() {
 
     // Verify we are currently setup
-    if (!b_setup) {
+    if (!p_setup) {
         return;
     }
 
     discord_cat.info("Shutting down...");
     Discord_Shutdown();
-    b_setup = false;
+    p_setup = false;
 }
-
-
 
  /* 
   * Performs update operations for the Discord RPC library
   */
-void DiscordConnection::update() {
+void DiscordConnection::tick() {
 
     // Verify we are currently setup
-    if (!b_setup) {
+    if (!p_setup) {
         return;
     }
 
     #ifdef DISCORD_DISABLE_IO_THREAD
         Discord_UpdateConnection();
     #endif
-        Discord_RunCallbacks();
+    Discord_RunCallbacks();
 }
 
 /*
@@ -96,19 +98,29 @@ void DiscordConnection::update() {
 void DiscordConnection::update_presence(RichPresenceStatus* status) {
 
     // Verify we are currently setup
-    if (!b_setup) {
+    if (!p_setup) {
         discord_cat.warning() << "Attempted to update rich presence on an uninitialized discord-rpc connection" << std::endl;
         return;
     }
 
-    discord_cat.info() << "Updating rich presence..." << std::endl;
-    //Discord_UpdatePresence(&status->p_rich_presence); 
-    //TEST
-    DiscordRichPresence discordPresence;
-    memset(&discordPresence, 0, sizeof(discordPresence));
-    discordPresence.state = "Example State";
-    discordPresence.details = "Example Details";
+    if (status != nullptr) {
+        discord_cat.info() << "Updating rich presence..." << std::endl;
+        //Discord_UpdatePresence((DiscordRichPresence*) p_rich_presence_status); 
+    } else {
+        discord_cat.info() << "Clearing rich presence." << std::endl;
+        Discord_ClearPresence();
+    }
+}
 
-    discord_cat.info() << "Setting Test Presence..." << std::endl;
-    Discord_UpdatePresence(&discordPresence); 
+/*
+ *  
+ */
+void DiscordConnection::respond(std::string userId, DiscordReply response) {
+    // Verify we are currently setup
+    if (!p_setup) {
+        discord_cat.warning() << "Attempting to respond on a discord connection that is not initialized" << std::endl;
+        return;
+    }
+
+    Discord_Respond(userId.c_str(), (int) response);
 }
