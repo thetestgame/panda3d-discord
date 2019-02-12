@@ -1,6 +1,6 @@
-/**
- * Author: Jordan Maxwell
- * Written: 02/08/2019
+ /**
+ *  Author: Jordan Maxwell
+ * Written: 02/11/2019
  *
  * The MIT License (MIT)
  * 
@@ -25,38 +25,19 @@
  * SOFTWARE.
  */
 
-#include "config_discord.h"
+INLINE void RichPresenceStatus::set_state(std::string state) {
 
-/*
- * Import all the required files for the libdiscord module
- */
-#include "discord_connection.h"
-#include "rich_presence_status.h"
-
-#include "dconfig.h"
-
-Configure(config_discord);
-NotifyCategoryDef(discord , "");
-
-ConfigureFn(config_discord) {
-  init_libdiscord();
 }
 
-/**
- * Initializes the library.  This must be called at least once before any of
- * the functions or classes in this library can be used.  Normally it will be
- * called by the static initializers and need not be called explicitly, but
- * special cases exist.
- */
-void init_libdiscord() {
-  static bool initialized = false;
-  if (initialized) {
-    return;
-  }
-  initialized = true;
+INLINE std::string RichPresenceStatus::get_state() {
+    return ""; //TODO
+}
 
-  DiscordConnection::init_type();
-  RichPresenceStatus::init_type();
+INLINE void RichPresenceStatus::set_details(std::string details) {
 
+}
+
+INLINE std::string RichPresenceStatus::get_details() {
+    return ""; //TODO
 }
 

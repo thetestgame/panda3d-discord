@@ -29,18 +29,13 @@ set(DISCORD_RPC_ROOT ${PROJECT_SOURCE_DIR}/discord-rpc CACHE PATH "" FORCE)
 if ((NOT EXISTS ${DISCORD_RPC_ROOT}))
     message(ERROR "Failed to build Panda3D LibDiscord; Discord RPC not found (${DISCORD_RPC_ROOT})")
 endif()
+message(STATUS "Found discord-rpc library: ${DISCORD_RPC_ROOT}")
 
 # Link code
-target_link_libraries(${PROJECT_NAME} ${DISCORD_RPC_ROOT}/lib/discord-rpc.lib)
-target_include_directories(${PROJECT_NAME} PRIVATE ${DISCORD_RPC_ROOT}/include)
-
-# Copy library to output
-if (WIN32) 
-    add_custom_command(TARGET ${project_target} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${DISCORD_RPC_ROOT}/bin/discord-rpc.dll"
-        $<TARGET_FILE_DIR:${project_target}>)    
+if (WIN32)
+    link_libraries(${DISCORD_RPC_ROOT}/lib/discord-rpc.lib)
 else()
-    message(WARNING "This operating system is not supported by the Panda3D LibDiscord
-     CMake.")
+    message(ERROR "Your platform is not supported by this CMake script")
 endif()
+
+include_directories(${DISCORD_RPC_ROOT}/include)

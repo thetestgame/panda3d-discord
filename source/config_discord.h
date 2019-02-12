@@ -25,7 +25,8 @@
  * SOFTWARE.
  */
 
-#pragma once
+#ifndef _CONFIG_DISCORD_H_
+#define _CONFIG_DISCORD_H_
 
 #include "pandabase.h"
 
@@ -34,3 +35,5 @@
 NotifyCategoryDecl(discord, EXPORT_CLASS, EXPORT_TEMPL);
 
 extern void init_libdiscord();
+
+#endif

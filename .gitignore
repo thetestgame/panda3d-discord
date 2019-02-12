@@ -12,3 +12,7 @@ Source/Interrogate*
 
 # Discord RPC
 discord-rpc/
+*.dll
+
+# Visual Studio Code
+**/.vscode

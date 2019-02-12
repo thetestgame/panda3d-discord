@@ -17,3 +17,6 @@ scripts/
 CMakeLists.txt
 build.py
 LICENSE
+
+# Discord RPC
+discord-rpc/
