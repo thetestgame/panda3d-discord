@@ -1,5 +1,5 @@
  /**
- *  Author: Jordan Maxwell
+ * Author: Jordan Maxwell
  * Written: 02/11/2019
  *
  * The MIT License (MIT)
@@ -93,9 +93,9 @@ void DiscordConnection::tick() {
 }
 
 /*
- * Updates the current rich presence state for the connection
+ * Publishes the requested rich presence status to the Discord client
  */
-void DiscordConnection::update_presence(RichPresenceStatus* status) {
+void DiscordConnection::publish_status(RichPresenceStatus* status) {
 
     // Verify we are currently setup
     if (!p_setup) {
@@ -104,8 +104,9 @@ void DiscordConnection::update_presence(RichPresenceStatus* status) {
     }
 
     if (status != nullptr) {
-        discord_cat.info() << "Updating rich presence..." << std::endl;
-        //Discord_UpdatePresence((DiscordRichPresence*) p_rich_presence_status); 
+        discord_cat.warning() << "Updating rich presence..." << std::endl;
+        Discord_UpdatePresence(&status->build_rich_presence());
+        discord_cat.warning() << "WOAH!" << std::endl;
     } else {
         discord_cat.info() << "Clearing rich presence." << std::endl;
         Discord_ClearPresence();
@@ -116,6 +117,7 @@ void DiscordConnection::update_presence(RichPresenceStatus* status) {
  *  
  */
 void DiscordConnection::respond(std::string userId, DiscordReply response) {
+
     // Verify we are currently setup
     if (!p_setup) {
         discord_cat.warning() << "Attempting to respond on a discord connection that is not initialized" << std::endl;

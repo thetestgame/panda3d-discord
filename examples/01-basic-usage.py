@@ -1,5 +1,5 @@
 """
- *  Author: Jordan Maxwell
+ * Author: Jordan Maxwell
  * Written: 02/11/2019
  *
  * The MIT License (MIT)
@@ -35,9 +35,9 @@ connection.connect('345229890980937739')
 
 # Set test status 
 status = libdiscord.RichPresenceStatus()
-status.set_state('Woah!')
-status.set_details('Wow!')
-connection.update_presence(status)
+status.state = 'Testing State'
+status.details = 'Testing Details'
+connection.publish_status(status)
 
 def perform_update(task):
     """

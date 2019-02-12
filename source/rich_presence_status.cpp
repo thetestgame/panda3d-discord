@@ -1,5 +1,5 @@
  /**
- *  Author: Jordan Maxwell
+ * Author: Jordan Maxwell
  * Written: 02/11/2019
  *
  * The MIT License (MIT)
@@ -29,10 +29,36 @@
 
 TypeHandle RichPresenceStatus::_type_handle;
 
-RichPresenceStatus::RichPresenceStatus() {
+/*
+ * Creates a DiscordRichPresence object for publishing to the Discord client
+ * through a DiscordConnection object
+ */
+const struct DiscordRichPresence RichPresenceStatus::build_rich_presence() {
 
-}
+    // Build rich presence status
+    DiscordRichPresence discord_presence;
+    memset(&discord_presence, 0, sizeof(discord_presence));
 
-RichPresenceStatus::~RichPresenceStatus() {
+    discord_presence.state = this->state;
+    discord_presence.details = this->details;
 
+    discord_presence.startTimestamp = this->startTimestamp;
+    discord_presence.endTimestamp = this->endTimestamp;
+
+    discord_presence.largeImageKey = this->largeImageKey;
+    discord_presence.largeImageText = this->largeImageText;
+    discord_presence.smallImageKey = this->smallImageKey;
+    discord_presence.smallImageText = this->smallImageText;
+
+    discord_presence.partyId = this->partyId;
+    discord_presence.partySize = this->partySize;
+    discord_presence.partyMax = this->partyMax;
+
+    discord_presence.matchSecret = this->matchSecret;
+    discord_presence.joinSecret = this->joinSecret;
+    discord_presence.spectateSecret = this->spectateSecret;
+
+    discord_presence.instance = this->instance;
+
+    return discord_presence;
 }

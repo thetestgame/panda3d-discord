@@ -1,5 +1,5 @@
  /**
- *  Author: Jordan Maxwell
+ * Author: Jordan Maxwell
  * Written: 02/11/2019
  *
  * The MIT License (MIT)
@@ -25,7 +25,7 @@
  * SOFTWARE.
  */
 
-INLINE void RichPresenceStatus::set_state(std::string state) {
+INLINE void RichPresenceStatus::set_state(const std::string state) {
     this->state = state.c_str();
 }
 
@@ -33,7 +33,7 @@ INLINE std::string RichPresenceStatus::get_state() {
     return this->state;
 }
 
-INLINE void RichPresenceStatus::set_details(std::string details) {
+INLINE void RichPresenceStatus::set_details(const std::string details) {
     this->details = details.c_str();
 }
 

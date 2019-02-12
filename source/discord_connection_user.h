@@ -1,5 +1,5 @@
  /**
- *  Author: Jordan Maxwell
+ * Author: Jordan Maxwell
  * Written: 02/11/2019
  *
  * The MIT License (MIT)

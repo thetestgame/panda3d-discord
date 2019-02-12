@@ -1,5 +1,5 @@
  /**
- *  Author: Jordan Maxwell
+ * Author: Jordan Maxwell
  * Written: 02/11/2019
  *
  * The MIT License (MIT)
@@ -29,9 +29,7 @@
 #define _RICH_PRESENCE_STATUS_H_
 
 #include "config_discord.h"
-
 #include "discord_rpc.h"
-
 #include "typedReferenceCount.h"
 
 #include <string>
@@ -39,17 +37,18 @@
 
 class RichPresenceStatus : public TypedReferenceCount, DiscordRichPresence {
 
-    PUBLISHED:
-        RichPresenceStatus();
-        ~RichPresenceStatus();
+    public:
+        const struct DiscordRichPresence build_rich_presence();
 
-        INLINE void set_state(std::string state);
+    PUBLISHED:
+        INLINE void set_state(const std::string state);
         INLINE std::string get_state();
         MAKE_PROPERTY(state, get_state, set_state);
 
-        INLINE void set_details(std::string details);
+        INLINE void set_details(const std::string details);
         INLINE std::string get_details();
         MAKE_PROPERTY(details, get_details, set_details);
+
     public:
         static TypeHandle get_class_type() {
             return _type_handle;
@@ -67,7 +66,6 @@ class RichPresenceStatus : public TypedReferenceCount, DiscordRichPresence {
     private:
         static TypeHandle _type_handle;
 };
-
 #include "rich_presence_status.I"
 
 #endif

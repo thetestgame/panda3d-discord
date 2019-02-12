@@ -1,5 +1,5 @@
  /**
- *  Author: Jordan Maxwell
+ * Author: Jordan Maxwell
  * Written: 02/11/2019
  *
  * The MIT License (MIT)
@@ -56,8 +56,7 @@ class DiscordConnection : public TypedReferenceCount {
         void disconnect();
         void tick();
 
-        void update_presence(RichPresenceStatus* status);
-        //INLINE RichPresenceStatus* get_rich_presence();
+        void publish_status(RichPresenceStatus* status);
 
         // This enum contains every reply state for the Discord
         // connection.
