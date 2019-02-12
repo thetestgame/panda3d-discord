@@ -16,3 +16,6 @@ discord-rpc/
 
 # Visual Studio Code
 **/.vscode
+
+# Test script
+test.py
