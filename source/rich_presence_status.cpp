@@ -39,24 +39,24 @@ const struct DiscordRichPresence RichPresenceStatus::build_rich_presence() {
     DiscordRichPresence discord_presence;
     memset(&discord_presence, 0, sizeof(discord_presence));
 
-    discord_presence.state = this->state;
-    discord_presence.details = this->details;
+    discord_presence.state = this->state.c_str();
+    discord_presence.details = this->details.c_str();
 
     discord_presence.startTimestamp = this->startTimestamp;
     discord_presence.endTimestamp = this->endTimestamp;
 
-    discord_presence.largeImageKey = this->largeImageKey;
-    discord_presence.largeImageText = this->largeImageText;
-    discord_presence.smallImageKey = this->smallImageKey;
-    discord_presence.smallImageText = this->smallImageText;
+    discord_presence.largeImageKey = this->largeImageKey.c_str();
+    discord_presence.largeImageText = this->largeImageText.c_str();
+    discord_presence.smallImageKey = this->smallImageKey.c_str();
+    discord_presence.smallImageText = this->smallImageText.c_str();
 
-    discord_presence.partyId = this->partyId;
+    discord_presence.partyId = this->partyId.c_str();
     discord_presence.partySize = this->partySize;
     discord_presence.partyMax = this->partyMax;
 
-    discord_presence.matchSecret = this->matchSecret;
-    discord_presence.joinSecret = this->joinSecret;
-    discord_presence.spectateSecret = this->spectateSecret;
+    discord_presence.matchSecret = this->matchSecret.c_str();
+    discord_presence.joinSecret = this->joinSecret.c_str();
+    discord_presence.spectateSecret = this->spectateSecret.c_str();
 
     discord_presence.instance = this->instance;
 

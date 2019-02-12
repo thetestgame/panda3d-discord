@@ -44,7 +44,7 @@ def perform_update(task):
     Calls the connection update function once per frame
     """
 
-    connection.tick()
+    connection.poll()
     
     return task.cont 
 

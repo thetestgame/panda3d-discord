@@ -79,7 +79,7 @@ void DiscordConnection::disconnect() {
  /* 
   * Performs update operations for the Discord RPC library
   */
-void DiscordConnection::tick() {
+void DiscordConnection::poll() {
 
     // Verify we are currently setup
     if (!p_setup) {

@@ -54,7 +54,7 @@ class DiscordConnection : public TypedReferenceCount {
 
         void connect(std::string application_id);
         void disconnect();
-        void tick();
+        void poll();
 
         void publish_status(RichPresenceStatus* status);
 
