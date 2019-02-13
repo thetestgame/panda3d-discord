@@ -25,6 +25,10 @@
  * SOFTWARE.
 """
 
+# include built pyd file
+import sys
+sys.path.append('../')
+
 from panda3d.core import *
 from direct.showbase.ShowBase import ShowBase
 import libdiscord
