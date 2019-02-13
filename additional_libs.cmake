@@ -38,4 +38,11 @@ else()
     message(ERROR "Your platform is not supported by this CMake script")
 endif()
 
+# Include header files
 include_directories(${DISCORD_RPC_ROOT}/include)
+
+# Copy dependencies
+if(WIN32) 
+    message(STATUS "Copying discord-rpc.dll to output")
+    file(COPY "${DISCORD_RPC_ROOT}/bin/discord-rpc.dll" DESTINATION ${PROJECT_SOURCE_DIR})
+endif()
