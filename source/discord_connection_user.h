@@ -39,12 +39,13 @@
  */
 class DiscordConnectionUser : public TypedReferenceCount, DiscordUser {
 
-    PUBLISHED:
-
+    public:
         INLINE std::string get_username();
         INLINE std::string get_discriminator();
         INLINE std::string get_user_id();
         INLINE std::string get_avatar();
+
+    PUBLISHED:
 
         /* Define properties */
         MAKE_PROPERTY(username, get_username);
