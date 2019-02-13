@@ -40,65 +40,66 @@ class RichPresenceStatus : public TypedReferenceCount {
     public:
         const struct DiscordRichPresence build_rich_presence();
 
-    PUBLISHED:
         INLINE void set_state(const std::string state);
         INLINE std::string get_state();
-        MAKE_PROPERTY(state, get_state, set_state);
 
         INLINE void set_details(const std::string details);
         INLINE std::string get_details();
-        MAKE_PROPERTY(details, get_details, set_details);
 
         INLINE void set_start_timestamp(int64_t startTimestamp);
         INLINE int64_t get_start_timestamp();
-        MAKE_PROPERTY(start_timestamp, get_start_timestamp, set_start_timestamp);
 
         INLINE void set_end_timestamp(int64_t endTimestamp);
         INLINE int64_t get_end_timestamp();
-        MAKE_PROPERTY(end_timestamp, get_end_timestamp, set_end_timestamp);
 
         INLINE void set_large_image_key(const std::string largeImageKey);
         INLINE std::string get_large_image_key();
-        MAKE_PROPERTY(large_image_key, get_large_image_key, set_large_image_key);
 
         INLINE void set_large_image_text(const std::string largeImageText);
         INLINE std::string get_large_image_text();
-        MAKE_PROPERTY(large_image_text, get_large_image_text, set_large_image_text);
 
         INLINE void set_small_image_key(const std::string smallImageKey);
         INLINE std::string get_small_image_key();
-        MAKE_PROPERTY(small_image_key, get_small_image_key, set_small_image_key);
 
         INLINE void set_small_image_text(const std::string smallImageText);
         INLINE std::string get_small_image_text();
-        MAKE_PROPERTY(small_image_text, get_small_image_text, set_small_image_text);
 
         INLINE void set_party_id(const std::string partyId);
         INLINE std::string get_party_id();
-        MAKE_PROPERTY(party_id, get_party_id, set_party_id);
 
         INLINE void set_party_size(int partySize);
         INLINE int get_party_size();
-        MAKE_PROPERTY(party_size, get_party_size, set_party_size);
 
         INLINE void set_party_max(int partyMax);
         INLINE int get_party_max();
-        MAKE_PROPERTY(party_max, get_party_max, set_party_max);
 
         INLINE void set_match_secret(const std::string matchSecret);
         INLINE std::string get_match_secret();
-        MAKE_PROPERTY(match_secret, get_match_secret, set_match_secret);
 
         INLINE void set_join_secret(const std::string joinSecret);
         INLINE std::string get_join_secret();
-        MAKE_PROPERTY(join_secret, get_join_secret, set_join_secret);
 
         INLINE void set_spectate_secret(const std::string spectateSecret);
         INLINE std::string get_spectate_secret();
-        MAKE_PROPERTY(spectate_secret, get_spectate_secret, set_spectate_secret);
 
         INLINE void set_instance(int8_t instance);
         INLINE int8_t get_instance();
+    PUBLISHED:
+
+        MAKE_PROPERTY(state, get_state, set_state);
+        MAKE_PROPERTY(details, get_details, set_details);
+        MAKE_PROPERTY(start_timestamp, get_start_timestamp, set_start_timestamp);
+        MAKE_PROPERTY(end_timestamp, get_end_timestamp, set_end_timestamp);
+        MAKE_PROPERTY(large_image_key, get_large_image_key, set_large_image_key);
+        MAKE_PROPERTY(large_image_text, get_large_image_text, set_large_image_text);
+        MAKE_PROPERTY(small_image_key, get_small_image_key, set_small_image_key);
+        MAKE_PROPERTY(small_image_text, get_small_image_text, set_small_image_text);
+        MAKE_PROPERTY(party_id, get_party_id, set_party_id);
+        MAKE_PROPERTY(party_size, get_party_size, set_party_size);
+        MAKE_PROPERTY(party_max, get_party_max, set_party_max);
+        MAKE_PROPERTY(match_secret, get_match_secret, set_match_secret);
+        MAKE_PROPERTY(join_secret, get_join_secret, set_join_secret);
+        MAKE_PROPERTY(spectate_secret, get_spectate_secret, set_spectate_secret);
         MAKE_PROPERTY(instance, get_instance, set_instance);
 
     protected:
