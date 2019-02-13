@@ -1,6 +1,6 @@
 """
  * Author: Jordan Maxwell
- * Written: 02/11/2019
+ * Written: 02/13/2019
  *
  * The MIT License (MIT)
  * 
@@ -56,6 +56,54 @@ def perform_update(task):
 # Create showbase instance and add discord update task
 base = ShowBase()
 base.taskMgr.add(perform_update, 'discord-update-task')
+
+def shutdown():
+    """
+    Used to demonstrate the disconnect event
+    """
+
+    connection.disconnect()
+
+base.userExit = shutdown
+
+def on_discord_ready(connected_user):
+    """
+    Called when the Discord connection is established. connected_user
+    represents the currently logged in Discord user.
+    """
+
+    print('Hello %s!' % connected_user.discord_tag)
+
+base.accept('discord-ready', on_discord_ready)
+
+def on_discord_disconnect():
+    """
+    Called when the connection is closed
+    """
+
+    print('Disconnected from Discord client')
+
+base.accept('discord-disconnect', on_discord_disconnect)
+
+def on_discord_disconnected(error_code, message):
+    """
+    Called when the connection is forcefully closed by the Discord
+    client.
+    """
+
+    print('Forced disconnect! Code: %s Message: %s' % (error_code, message))
+
+base.accept('discord-force-disconnect', on_discord_disconnected)
+
+def on_discord_error(error_code, message):
+    """
+    Called when the discord-rpc library encounters an error. This also will
+    disconnect the the library from the client
+    """
+
+    print('Library error! Code: %s Message: %s' % (error_code, message))
+    
+base.accept('discord-error', on_discord_error)
 
 # Run showbase
 base.run()
