@@ -27,6 +27,7 @@
 
 #include "discord_connection.h"
 #include "throw_event.h"
+#include "eventParameter.h"
 
 DiscordConnection* DiscordConnection::p_global_ptr;
 bool DiscordConnection::p_setup;
@@ -55,6 +56,7 @@ static void on_discord_ready(const DiscordUser* connectedUser) {
 static void on_discord_disconnected(int errcode, const char* message) {
     discord_cat.warning() << "Forced disconnect from client (" << errcode << "): " << message << "" << std::endl;
     DiscordConnection::get_global_ptr()->disconnect();
+    throw_event("discord-force-disconnect", EventParameter(message), EventParameter(errcode));
 }
 
 /*
@@ -64,9 +66,7 @@ static void on_discord_disconnected(int errcode, const char* message) {
 static void on_discord_error(int errcode, const char* message) {
     discord_cat.error() << "discord-rpc error has occured (" << errcode << "): " << message << "" << std::endl;
     DiscordConnection::get_global_ptr()->disconnect();
-    
-    //std::string event_message(message);
-    //throw_event("discord-error", message);
+    throw_event("discord-error", EventParameter(message), EventParameter(errcode));
 }
 
 /**
