@@ -31,14 +31,14 @@ sys.path.append('../')
 
 from panda3d.core import *
 from direct.showbase.ShowBase import ShowBase
-import libdiscord
+from discord import DiscordConnection, RichPresenceStatus
 
 # Create Discord connection
-connection = libdiscord.DiscordConnection.get_global_ptr()
+connection = DiscordConnection.get_global_ptr()
 connection.connect('345229890980937739', '')
 
 # Set test status 
-status = libdiscord.RichPresenceStatus()
+status = RichPresenceStatus()
 status.state = 'Testing State'
 status.details = 'Testing Details'
 connection.publish_status(status)
