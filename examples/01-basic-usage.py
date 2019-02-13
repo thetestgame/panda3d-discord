@@ -34,7 +34,7 @@ from direct.showbase.ShowBase import ShowBase
 import libdiscord
 
 # Create Discord connection
-connection = libdiscord.DiscordConnection()
+connection = libdiscord.DiscordConnection.get_global_ptr()
 connection.connect('345229890980937739', '')
 
 # Set test status 
