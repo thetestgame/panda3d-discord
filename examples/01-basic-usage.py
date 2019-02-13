@@ -35,7 +35,7 @@ import libdiscord
 
 # Create Discord connection
 connection = libdiscord.DiscordConnection()
-connection.connect('345229890980937739')
+connection.connect('345229890980937739', '')
 
 # Set test status 
 status = libdiscord.RichPresenceStatus()

@@ -25,6 +25,10 @@
  * SOFTWARE.
  */
 
-DiscordConnectionUser* DiscordConnection::get_connection_user() {
+INLINE void DiscordConnection::set_connection_user(const DiscordUser* connectedUser) {
+    p_connection_user = new DiscordConnectionUser(connectedUser);
+}
+
+INLINE DiscordConnectionUser* DiscordConnection::get_connection_user() {
     return p_connection_user;
 }

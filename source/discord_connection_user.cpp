@@ -29,9 +29,9 @@
 
 TypeHandle DiscordConnectionUser::_type_handle;
 
-DiscordConnectionUser::DiscordConnectionUser(struct DiscordUser *user) {
-    this->userId = user->userId;
-    this->username = user->username;
-    this->discriminator = user->discriminator;
-    this->avatar = user->avatar;
+DiscordConnectionUser::DiscordConnectionUser(const DiscordUser *user) {
+    userId = user->userId;
+    username = user->username;
+    discriminator = user->discriminator;
+    avatar = user->avatar;
 }

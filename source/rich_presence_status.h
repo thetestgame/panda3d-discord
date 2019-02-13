@@ -35,6 +35,9 @@
 #include <string>
 #include <iostream>
 
+/*
+ * Panda wrapper class for the discord-rpc DiscordRichPresence struct
+ */
 class RichPresenceStatus : public TypedReferenceCount {
 
     public:
@@ -84,6 +87,7 @@ class RichPresenceStatus : public TypedReferenceCount {
 
         INLINE void set_instance(int8_t instance);
         INLINE int8_t get_instance();
+
     PUBLISHED:
 
         MAKE_PROPERTY(state, get_state, set_state);

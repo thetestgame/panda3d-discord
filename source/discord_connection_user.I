@@ -26,17 +26,21 @@
  */
 
 INLINE std::string DiscordConnectionUser::get_username() {
-    return this->username;
+    return username;
 }
 
 INLINE std::string DiscordConnectionUser::get_discriminator() {
-    return this->discriminator;
+    return discriminator;
 }
 
 INLINE std::string DiscordConnectionUser::get_user_id() {
-    return this->userId;
+    return userId;
 }
 
 INLINE std::string DiscordConnectionUser::get_avatar() {
-    return this->avatar;
+    return avatar;
+}
+
+INLINE std::string DiscordConnectionUser::get_discord_tag() {
+    return username + "#" + discriminator;
 }

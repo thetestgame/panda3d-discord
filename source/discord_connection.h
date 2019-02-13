@@ -35,6 +35,7 @@
 #include "pandabase.h"
 #include "pandaFramework.h"
 #include "typedReferenceCount.h"
+#include "callbackObject.h"
 
 #include "discord_rpc.h"
 
@@ -45,14 +46,27 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 
+/*
+ *Forward declare DiscordUser for the interrogate
+ *parser.
+ */
+struct DiscordUser;
+
+/*
+ *
+ */
 class DiscordConnection : public TypedReferenceCount {
 
+    public: 
+        INLINE void set_connection_user(const DiscordUser* connectedUser);
+        INLINE DiscordConnectionUser* get_connection_user();
+    
     PUBLISHED:
-
-        DiscordConnection();
         ~DiscordConnection();
 
-        void connect(std::string application_id);
+        static DiscordConnection* get_global_ptr();
+
+        void connect(std::string application_id, std::string steamId);
         void disconnect();
         void poll();
 
@@ -61,19 +75,21 @@ class DiscordConnection : public TypedReferenceCount {
         // This enum contains every reply state for the Discord
         // connection.
         enum DiscordReply {
-            DR_REPLY_NO = 1,
-            DR_REPLY_YES = 2,
-            DR_REPLY_IGNORE = 3
+            DR_REPLY_NO = DISCORD_REPLY_NO,
+            DR_REPLY_YES = DISCORD_REPLY_YES,
+            DR_REPLY_IGNORE = DISCORD_REPLY_IGNORE
         };
         void respond(std::string userId, DiscordReply response);
 
-        INLINE DiscordConnectionUser* get_connection_user();
         MAKE_PROPERTY(connection_user, get_connection_user);
 
     private:
+        DiscordConnection();
+        static DiscordConnection* p_global_ptr;
         static bool p_setup;
 
         DiscordConnectionUser* p_connection_user;
+
     public:
         static TypeHandle get_class_type() {
             return _type_handle;

@@ -35,26 +35,39 @@
 #include "string.h"
 
 /*
+ *Forward declare DiscordUser for the interrogate
+ *parser.
+ */
+struct DiscordUser;
+
+/*
  * Panda wrapper class for the discord-rpc DiscordUser struct
  */
-class DiscordConnectionUser : public TypedReferenceCount, DiscordUser {
+class DiscordConnectionUser : public TypedReferenceCount {
 
     public:
         INLINE std::string get_username();
         INLINE std::string get_discriminator();
         INLINE std::string get_user_id();
         INLINE std::string get_avatar();
+        INLINE std::string get_discord_tag();
 
     PUBLISHED:
 
-        /* Define properties */
         MAKE_PROPERTY(username, get_username);
         MAKE_PROPERTY(discriminator, get_discriminator);
         MAKE_PROPERTY(user_id, get_user_id);
         MAKE_PROPERTY(avatar, get_avatar);
+        MAKE_PROPERTY(discord_tag, get_discord_tag);
 
     public:
-        DiscordConnectionUser(struct DiscordUser *user);
+        DiscordConnectionUser(const DiscordUser *user);
+
+    private:
+        std::string username;
+        std::string discriminator;
+        std::string userId;
+        std::string avatar;
 
     public:
         static TypeHandle get_class_type() {
