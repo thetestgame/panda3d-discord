@@ -104,9 +104,8 @@ void DiscordConnection::publish_status(RichPresenceStatus* status) {
     }
 
     if (status != nullptr) {
-        discord_cat.warning() << "Updating rich presence..." << std::endl;
+        discord_cat.info() << "Updating rich presence..." << std::endl;
         Discord_UpdatePresence(&status->build_rich_presence());
-        discord_cat.warning() << "WOAH!" << std::endl;
     } else {
         discord_cat.info() << "Clearing rich presence." << std::endl;
         Discord_ClearPresence();
