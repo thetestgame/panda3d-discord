@@ -1,8 +1,8 @@
 <img src="https://avatars3.githubusercontent.com/u/1965106?s=200&v=4" align="right">
 
-[![Build Status](https://travis-ci.com/NxtStudios/libDiscord.svg?branch=master)](https://travis-ci.com/NxtStudios/libDiscord)
+[![Build Status](https://travis-ci.com/NxtStudios/p3d-iscord.svg?branch=master)](https://travis-ci.com/NxtStudios/p3d-discord)
 
-libDiscord
+Panda3d Discord
 ============
 
 Discord RPC module for the Panda3d game engine using the native discord-rpc library. 
@@ -10,7 +10,7 @@ Discord RPC module for the Panda3d game engine using the native discord-rpc libr
 <b>Notice:</b> Currently the CMAKE code is only setup to operate properly on Windows. The source its self should have no issues running on other platforms however.
 
 
-## Building LibDiscord
+## Building Panda3D Discord
 run `python build.py`. This will build the module for you're current platform once the required dependencies are installed/availble.
 
 ### Requirements
