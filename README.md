@@ -30,5 +30,5 @@ run `python build.py`. This will build the module for you're current platform on
 - Windows SDK 7.1 (be sure to tick the VC++ 64 bit compilers option)
 
 ## License
-libDiscord is licensed under the MIT license. See the provided LICENSE file for details.
+Panda3D Discord is licensed under the MIT license. See the provided LICENSE file for details.
 
