@@ -1,6 +1,6 @@
 <img src="https://avatars3.githubusercontent.com/u/1965106?s=200&v=4" align="right">
 
-[![Build Status](https://travis-ci.com/NxtStudios/p3d-iscord.svg?branch=master)](https://travis-ci.com/NxtStudios/p3d-discord)
+[![Build Status](https://travis-ci.com/NxtStudios/p3d-discord.svg?branch=master)](https://travis-ci.com/NxtStudios/p3d-discord)
 
 Panda3d Discord
 ============
