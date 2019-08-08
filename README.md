@@ -1,7 +1,9 @@
 <img src="https://avatars3.githubusercontent.com/u/1965106?s=200&v=4" align="right">
 
 Panda3d Discord
-============
+===============
+![GitHub issues](https://img.shields.io/github/issues/NxtStudios/p3d-discord?style=for-the-badge)
+![PyPI - Status](https://img.shields.io/pypi/status/panda3d_discord?style=for-the-badge)
 
 <b>Notice:</b>The discord-rpc library is no londer under development. However an official response from Discord states the library will continue to function because it uses the same protocol as the new game sdk that Discord offers.
 
