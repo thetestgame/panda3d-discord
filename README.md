@@ -5,7 +5,7 @@ Panda3d Discord
 ![GitHub issues](https://img.shields.io/github/issues/NxtStudios/p3d-discord?style=for-the-badge)
 ![PyPI - Status](https://img.shields.io/pypi/status/panda3d_discord?style=for-the-badge)
 
-<b>Notice:</b>The discord-rpc library is no longer under development. However an official response from Discord states the library will continue to function because it uses the same protocol as the new game sdk that Discord offers.
+<b>Notice:</b> The discord-rpc library is no longer under development. However an official response from Discord states the library will continue to function because it uses the same protocol as the new game sdk that Discord offers.
 
 Discord RPC module for the Panda3d game engine using the native discord-rpc library. Currently the CMAKE code is only setup to operate properly on Windows. The source its self should have no issues running on other platforms however.
 
